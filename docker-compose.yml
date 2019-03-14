@@ -1,0 +1,11 @@
+version: '3'
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: database_dmp
+    ports:
+    - "3307:3306"
+    volumes:
+    - ./datadir:/var/lib/mysql
