@@ -2,3 +2,5 @@
 datadir
 *.sql
 *.tar.gz
+spaces.conf
+.env
