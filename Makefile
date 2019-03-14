@@ -22,6 +22,7 @@ download:
 		-h $(MYSQL_HOST) -P $(MYSQL_PORT) \
 		--databases $(MYSQL_NAME) \
 		--routines \
+		--single-transaction --quick --lock-tables=false \
 		> $(DUMP_FILE).sql
 
 compress:
