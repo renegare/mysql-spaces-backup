@@ -31,4 +31,4 @@ compress:
 upload:
 	s3cmd put $(DUMP_FILE).sql.tar.gz \
 		s3://$(SPACES_FOLDER)/`date +%Y%m%d-%H%M%S`-$(SPACES_FILE).sql.tar.gz \
-		-c spaces.conf
+		-c $(SPACES_CONF)
