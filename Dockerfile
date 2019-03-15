@@ -5,3 +5,10 @@ RUN apt-get update \
     make=4.1-9.1ubuntu1 \
     s3cmd=2.0.1-2 \
     mysql-client=5.7.25-0ubuntu0.18.04.2
+
+
+ADD ./src /tmp/src
+
+WORKDIR /tmp/src
+
+CMD [ "/bin/bash", "-c", "./entrypoint.sh"]
