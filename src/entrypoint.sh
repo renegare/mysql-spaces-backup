@@ -1,13 +1,10 @@
 #!/bin/bash
 
 PROJECT_DIR=$(readlink -f .)
-CONFIG=$PROJECT_DIR/conf/data-config.xml
+CONFIG=$PROJECT_DIR/spaces.conf
 
-echo "generating config $CONFIG"
+echo "generating config ..."
 
 cat $CONFIG | gomplate -o $CONFIG
 
-cat $CONFIG
-
-cd /opt/solr/example
-java -Dsolr.solr.home='/opt/solr/watchclub/' -jar start.jar
+make
