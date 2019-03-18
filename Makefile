@@ -7,3 +7,7 @@ build:
 	docker build -t $(IMAGE):$(VERSION) .
 	docker tag $(IMAGE):$(VERSION) $(IMAGE):latest
 	docker images $(IMAGE)
+
+push:
+	docker push $(IMAGE):$(VERSION)
+	docker push $(IMAGE):latest
