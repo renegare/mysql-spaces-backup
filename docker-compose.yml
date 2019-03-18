@@ -2,11 +2,29 @@ version: '3'
 services:
   backup:
     build: .
+    depends_on:
+      - "db"
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASS: password
+      MYSQL_HOST: db
+      MYSQL_PORT: 3306
+      MYSQL_NAME: demo
+      DUMP_FILE: dump
+      # must include a trailing slash e.g "folder-name/"
+      SPACES_FOLDER: 
+      SPACES_FILE: uploaded-dump
+      SPACES_CONF: ./spaces.conf
+      SPACES_ACCESS_KEY: ${SPACES_ACCESS_KEY:?SPACES_ACCESS_KEY is required}
+      SPACES_SECRET_KEY: ${SPACES_SECRET_KEY:?SPACES_SECRET_KEY is required}
+      SPACES_REGION: ${SPACES_REGION:?SPACES_REGION is required}
+      SPACES_BUCKET: ${SPACES_BUCKET:?SPACES_BUCKET is required}
+
   db:
     image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: database_dmp
+      MYSQL_DATABASE: demo
     ports:
     - "3307:3306"
     volumes:

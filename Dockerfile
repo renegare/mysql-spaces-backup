@@ -6,6 +6,12 @@ RUN apt-get update \
     s3cmd=2.0.1-2 \
     mysql-client=5.7.25-0ubuntu0.18.04.2
 
+# install gomplate
+COPY --from=hairyhenderson/gomplate:v2.5.0-slim /gomplate /bin/gomplate
+
+RUN apt-get install -y openssl
+RUN apt-get install -y ca-certificates
+RUN update-ca-certificates
 
 ADD ./src /tmp/src
 

@@ -6,7 +6,8 @@ MYSQL_NAME?=database
 
 DUMP_FILE?=dump
 
-SPACES_FOLDER?=namespace/folder
+SPACES_BUCKET?=namespace
+SPACES_FOLDER?= # must include a trailing slash
 SPACES_FILE?=uploaded-dump
 
 SPACES_CONF?=./spaces.conf
@@ -30,5 +31,6 @@ compress:
 	
 upload:
 	s3cmd put $(DUMP_FILE).sql.tar.gz \
-		s3://$(SPACES_FOLDER)/`date +%Y%m%d-%H%M%S`-$(SPACES_FILE).sql.tar.gz \
-		-c $(SPACES_CONF)
+		s3://$(SPACES_BUCKET)/$(SPACES_FOLDER)`date +%Y%m%d-%H%M%S`-$(SPACES_FILE).sql.tar.gz \
+		-c $(SPACES_CONF) \
+		-v
